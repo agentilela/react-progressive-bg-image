@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omit from 'ramda/src/omit';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 const omitProps = omit([
   'blur',
