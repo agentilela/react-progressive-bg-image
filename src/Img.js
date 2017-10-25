@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import omit from 'ramda/src/omit';
-import styled from 'react-emotion';
+import React from 'react'
+import PropTypes from 'prop-types'
+import omit from 'ramda/src/omit'
+import styled from 'react-emotion'
 
 const omitProps = omit([
   'blur',
@@ -11,15 +11,15 @@ const omitProps = omit([
   'opacity',
   'scale',
   'placeholder',
-]);
+])
 
 const BaseComponent = ({ component, children, ...otherProps }) =>
-  React.createElement(component, omitProps(otherProps), children);
-BaseComponent.displayName = 'BaseComponent';
+  React.createElement(component, omitProps(otherProps), children)
+BaseComponent.displayName = 'BaseComponent'
 BaseComponent.propTypes = {
   component: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   children: PropTypes.node, // Remind: There is not a children for Input tag.
-};
+}
 const StyledImg = styled(BaseComponent)`
   height: 100%;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@ const StyledImg = styled(BaseComponent)`
   filter: ${props => (props.isLoaded ? 'none' : `blur(${props.blur}px)`)};
   /* this is needed so Safari keeps sharp edges */
   transform: ${props => (props.isLoaded ? 'none' : `scale(${props.scale})`)};
-`;
+`
 
 const Img = ({ component, image, style, ...otherProps }) => (
   <StyledImg
@@ -41,9 +41,9 @@ const Img = ({ component, image, style, ...otherProps }) => (
       ...(component !== 'img' && { backgroundImage: `url("${image}")` }),
     }}
   />
-);
+)
 
-Img.displayName = 'Img';
+Img.displayName = 'Img'
 Img.propTypes = {
   // Internal
   image: PropTypes.string.isRequired,
@@ -58,6 +58,6 @@ Img.propTypes = {
   transition: PropTypes.string,
   style: PropTypes.object,
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-};
+}
 
-export default Img;
+export default Img

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { storiesOf } from '@storybook/react';
 import ProgressiveImage from '.';
 import image1 from '../images/image1.jpg';
