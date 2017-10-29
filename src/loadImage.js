@@ -4,6 +4,9 @@ const isCached = test => test.complete || test.width + test.height > 0;
 
 export default function loadImage(src) {
   return new Promise((resolve, reject) => {
+    if (typeof Image === 'undefined') {
+      return
+    }
     const image = new Image();
     image.src = src;
     // Remind: Check if cached
